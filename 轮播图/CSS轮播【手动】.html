@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.swiper-wrap {
+			position: relative;
+			width: 1226px;
+			height: 460px;
+			overflow: hidden;
+		}
+		.swiper-slide {
+			display: flex;
+			width: calc(1226px * 5);
+			filter: contrast(80%);
+			transition: all .5s;
+		}
+		.swiper-lazy {
+			width: 1226px;
+			height: 460px;
+		}
+		.swiper-wrap input[name="btn"] {
+			display: none;
+		}
+		.swiper-wrap .btn-bar label[for^="btn"] {
+			position: absolute;
+			bottom: 10px;
+			width: 20px;
+			height: 20px;
+			background-color: #fff;
+			border-radius: 50%;
+			cursor: pointer;
+			z-index: 1;
+			transition: all .3s;
+		}
+		.swiper-wrap .btn-bar label[for^="btn"]:nth-of-type(1) {
+			left: calc(50% - 80px);
+		}
+		.swiper-wrap .btn-bar label[for^="btn"]:nth-of-type(2) {
+			left: calc(50% - 40px);
+		}
+		.swiper-wrap .btn-bar label[for^="btn"]:nth-of-type(3) {
+			left: calc(50%);
+		}
+		.swiper-wrap .btn-bar label[for^="btn"]:nth-of-type(4) {
+			left: calc(50% + 40px);
+		}
+		.swiper-wrap .btn-bar label[for^="btn"]:nth-of-type(5) {
+			left: calc(50% + 80px);
+		}
+		.swiper-wrap #btn1:checked~.btn-bar label[for="btn1"] {
+			background-color: orangered;
+		}
+		.swiper-wrap #btn2:checked~.btn-bar label[for="btn2"] {
+			background-color: orangered;
+		}
+		.swiper-wrap #btn3:checked~.btn-bar label[for="btn3"] {
+			background-color: orangered;
+		}
+		.swiper-wrap #btn4:checked~.btn-bar label[for="btn4"] {
+			background-color: orangered;
+		}
+		.swiper-wrap #btn5:checked~.btn-bar label[for="btn5"] {
+			background-color: orangered;
+		}
+		.swiper-wrap #btn1:checked~.swiper-slide {
+			/*margin-left: calc(-1226px * 0);*/
+			/*transform: translateX(-1226px * 0);*/
+			transform: translateX(0);
+		}
+		.swiper-wrap #btn2:checked~.swiper-slide {
+			/*margin-left: calc(-1226px * 1);*/
+			/*transform: translateX(calc(-1226px * 1));*/
+			transform: translateX(-1226px);
+		}
+		.swiper-wrap #btn3:checked~.swiper-slide {
+			/*margin-left: calc(-1226px * 2);*/
+			/*transform: translateX(calc(-1226px * 2));*/
+			transform: translateX(-2452px);
+		}
+		.swiper-wrap #btn4:checked~.swiper-slide {
+			/*margin-left: calc(-1226px * 3);*/
+			/*transform: translateX(calc(-1226px * 3));*/
+			transform: translateX(-3678px);
+		}
+		.swiper-wrap #btn5:checked~.swiper-slide {
+			/*margin-left: calc(-1226px * 4);*/
+			/*transform: translateX(calc(-1226px * 4));*/
+			transform: translateX(-4904px);
+		}
+		.swiper-wrap .swiper-slide img {
+			transition: all 1.5s;
+		}
+		.swiper-wrap .swiper-slide img {
+			opacity: 0;
+		}
+		.swiper-wrap #btn1:checked~.swiper-slide img:nth-child(1) {
+			opacity: 1;
+		}
+		.swiper-wrap #btn2:checked~.swiper-slide img:nth-child(2) {
+			opacity: 1;
+		}
+		.swiper-wrap #btn3:checked~.swiper-slide img:nth-child(3) {
+			opacity: 1;
+		}
+		.swiper-wrap #btn4:checked~.swiper-slide img:nth-child(4) {
+			opacity: 1;
+		}
+		.swiper-wrap #btn5:checked~.swiper-slide img:nth-child(5) {
+			opacity: 1;
+		}
+	</style>
+</head>
+<body>
+	<div class="swiper-wrap">
+		<!-- CSS 没有父级选择器 -->
+		<input type="radio" name="btn" value="1" id="btn1" checked="" />
+		<input type="radio" name="btn" value="2" id="btn2" />
+		<input type="radio" name="btn" value="3" id="btn3" />
+		<input type="radio" name="btn" value="4" id="btn4" />
+		<input type="radio" name="btn" value="5" id="btn5" />
+		<div class="swiper-slide">
+			<img src="" alt="" class="swiper-lazy">
+			<img src="" alt="" class="swiper-lazy">
+			<img src="" alt="" class="swiper-lazy">
+			<img src="" alt="" class="swiper-lazy">
+			<img src="" alt="" class="swiper-lazy">
+		</div>
+		<div class="btn-bar">
+			<label for="btn1"></label>
+			<label for="btn2"></label>
+			<label for="btn3"></label>
+			<label for="btn4"></label>
+			<label for="btn5"></label>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var imgUrl = [
+			// display: block; width: 1226px; height: 460px;
+			'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/676ddccc418842904f82ccdc66bbaa34.jpg?w=2452&h=920',
+			'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cf6ba4d372b80e939104cf369f14139a.jpg?thumb=1&w=1226&h=460&f=webp&q=90',
+			'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9ebff5f5c1f52f2dbdd611897adbefd4.jpg?thumb=1&w=1226&h=460&f=webp&q=90',
+			'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0ef4160c861b998239bce9adb82341e7.jpg?thumb=1&w=1226&h=460&f=webp&q=90',
+			'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0fbb6a386c8a1c0acb7d7ab75d0ffa88.jpg?thumb=1&w=1226&h=460&f=webp&q=90',
+		];
+
+		var imgs = document.querySelectorAll('.swiper-lazy');
+		for (var i = 0; i < imgs.length; i++) {
+			imgs[i].src = imgUrl[i];
+		}
+	</script>
+</body>
+</html>

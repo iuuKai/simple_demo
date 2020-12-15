@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: rgba(0, 0, 0, .2);
+        }
+        a {
+            text-decoration: none;
+        }
+        .pager-flip {
+            position: relative;
+            margin: 100px auto;
+            width: 500px;
+            height: 300px;
+            background-color: #fff;
+            overflow: hidden;
+            box-shadow: 2px 3px 4px 2px rgb(0, 0, 0, .1);
+        }
+        .share-layer,
+        .image-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .item-bar {
+            text-align: center;
+        }
+        .help {   /* 辅助垂直居中 */
+            display: inline-block;
+            width: 0;
+            height: 300px;
+            vertical-align: middle;
+        }
+        .item {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            vertical-align: middle;
+            border-radius: 4px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, .3),
+                        1px 1px 2px rgba(0, 0, 0, .4);
+            opacity: 0;
+            transition: all .3s ease;
+        }
+        .item+.item {
+            margin-left: 20px;
+        }
+        .item:nth-child(1) {
+            background-color: rgb(72, 72, 173);
+        }
+        .item:nth-child(2) {
+            background-color: rgb(233, 61, 61);
+        }
+        .item:nth-child(3) {
+            background-color: rgb(71, 236, 71);
+        }
+        .close {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 1.6em;
+            line-height: 1;
+            color: rgba(0, 0, 0, .5);
+            cursor: pointer;
+            transition: all .2s linear;
+        }
+        .image-layer {
+            cursor: pointer;
+        }
+        .image-layer img {
+            width: 100%;
+            height: 100%;
+        }
+        .image-layer:before {   /* 折角 */
+            position: absolute;
+            top: 0;
+            right: 0;
+            content: '';
+            border-width: 0;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, .2) #fff;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, .3),
+                        -1px 1px 1px rgba(0, 0, 0, .2);
+            transition: all .4s ease-out;
+        }
+
+        /* 过渡效果 */
+        .image-layer:hover:before {
+            border-right-width: 100px;
+            border-bottom-width: 60px;
+        }
+        .close:hover {
+            color: rgba(0, 0, 0, .2);
+        }
+        .mask .image-layer:before {
+            border-right-width: 1000px;
+            border-bottom-width: 600px;
+        }
+        .mask .share-layer {
+            z-index: 1;
+        }
+        .mask .item:hover {
+            transform: scale(1.2);
+        }
+        .mask .item {
+            animation: fader 2s ease-in-out forwards;
+        }
+        .mask .item.item:nth-child(2) {
+            animation-delay: .2s;
+        }
+        .mask .item.item:nth-child(3) {
+            animation-delay: .4s;
+        }
+        /* 淡入动画 */
+        @keyframes fader {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+        }
+    </style>
+</head>
+<body>
+    <div class="pager-flip">
+        <div class="share-layer">
+            <div class="item-bar">
+                <a href="javascript: void(0);" class="item">菜单一</a>
+                <a href="javascript: void(0);" class="item">菜单二</a>
+                <a href="javascript: void(0);" class="item">菜单三</a>
+                <div class="help"></div><!-- 只是辅助垂直居中 -->
+            </div>
+            <span class="close">x</span>
+        </div>
+        <div class="image-layer">
+            <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3393686261,3351288279&fm=26&gp=0.jpg" alt="" />
+        </div>
+    </div>
+    <script>
+        // 事件代理，父元素接收冒泡事件
+        document.querySelector('.pager-flip').addEventListener('click', function(e) {
+            // IE 里，是 e.srcElement
+            // e 不会冒泡，点击哪个子元素，就是哪个子元素
+            // this 会冒泡，此处被父层 pager-flip 接收，指向它
+            // 冒泡传播到 pager-flip 层并未停止，还会继续向上冒泡，直至最外层，即 <html>
+            if (e.target.className === 'close') {
+                this.className = 'pager-flip';
+            } else {
+                this.className = 'pager-flip mask';
+            }
+        });
+    </script>
+</body>
+</html>

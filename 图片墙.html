@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .picwall-wrap {
+            position: absolute;
+            top: calc(50% - 400px / 2);
+            left: calc(50% - 600px / 2);
+            display: flex;
+            width: 600px;
+            height: 400px;
+            border: 5px solid #fff;
+            border-radius: 15px;
+            background-color: rgb(32, 32, 32);
+            box-shadow: 0 0 0 10px rgb(32, 32, 32);
+            justify-content: center;
+            align-items: center;
+        }
+        .picwall-wrap .pics {
+            width: 200px;
+            height: 130px;
+        }
+        .picwall-wrap .pics .pic {
+            position: absolute;
+            width: 200px;
+            height: 130px;
+            border: 5px solid #fff;
+            transform-origin: center 400px;
+            transition: all .4s linear;
+        }
+        .picwall-wrap .pics .pic:nth-last-of-type(1) {
+            transform: rotate(-5deg);
+        }
+        .picwall-wrap .pics .pic:nth-last-of-type(3) {
+            transform: rotate(5deg);
+        }
+        .picwall-wrap .pics:hover .pic:nth-last-of-type(1) {
+            transform: rotate(-20deg);
+        }
+        .picwall-wrap .pics:hover .pic:nth-last-of-type(3) {
+            transform: rotate(20deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="picwall-wrap">
+        <div class="pics">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604754324756&di=6a522bd1046b365a3b70339881fdfaf6&imgtype=0&src=http%3A%2F%2Fpic.ossfiles.cn%3A9186%2Fgroup2%2FM00%2F55%2F59%2FrBgICV2xD4eAM8LSAADpJNgumbg253.jpg" alt="" class="pic">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604754437339&di=906d8789684f652d592beac8dbc6b90f&imgtype=0&src=http%3A%2F%2Fwww.petday.com.cn%2Fcms_upload%2F20150602%2F20150602134849_567.png" alt="" class="pic">
+            <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1582561880,1513780261&fm=26&gp=0.jpg" alt="" class="pic">
+        </div>
+    </div>
+</body>
+</html>

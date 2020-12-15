@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        body {
+            background-color: rgba(0, 0, 0, .4);
+        }
+        .wrap {
+            position: relative;
+            display: flex;
+            width: 710px;
+            height: 470px;
+            border: 10px solid #fff;
+            border-radius: 15px;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .bg-layer {
+            background-color: #e91e63;
+            border-radius: 12px;
+            box-shadow: 0 0 0 10px rgba(255, 255, 255, .6);
+        }
+        .img-layer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 710px;
+            height: 470px;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+        .img-layer img {
+            width: 100%;
+            height: 100%;
+        }
+        .txt {
+            padding: 30px 40px;
+            font-size: 7em;
+            font-weight: bold;
+            line-height: 1;
+            color: transparent;
+            background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604956716035&di=b51cbf1a9f0fb5b90b3f37341b1a9a42&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180906%2Fd27ecd5c14824c3883a6c946d3274c47.jpg)
+                        no-repeat center -149px;
+            background-size: 710px 470px;
+            -webkit-background-clip: text;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="bg-layer">
+            <div class="txt">镂空字体</div>
+        </div>
+        <div class="img-layer">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1604956716035&di=b51cbf1a9f0fb5b90b3f37341b1a9a42&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180906%2Fd27ecd5c14824c3883a6c946d3274c47.jpg" alt="" />
+        </div>
+    </div>
+</body>
+</html>

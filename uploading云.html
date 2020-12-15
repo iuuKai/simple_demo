@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        /* 云上传 */
+        .cloud {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        /* 绘图容器 */
+        .draw {
+            position: absolute;
+            background-color: #39f;
+            transform: translateY(-15px);
+        }
+        /* 小圆 */
+        .circle-s {
+            left: calc(50% - 28px / 2 - 38px / 2);
+            bottom: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+        }
+        /* 中圆 */
+        .circle-m {
+            left: calc(50% + 4px);
+            bottom: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+        /* 大圆 */
+        .circle-l {
+            left: calc(50% - 42px / 2);
+            bottom: calc(50% - 44px / 2 - 12px);
+            width: 42px;
+            height: 44px;
+            border-radius: 50%;
+        }
+        /* 正方形 */
+        .square {
+            left: calc(50% - 39px / 2);
+            bottom: 0;
+            width: 39px;
+            height: 34px;
+        }
+        /* 箭头（:before与:after伪元素效果不理想，需要单独绘制） */
+        .arrow {
+            position: absolute;
+            top:  calc(50% - 20px / 2);
+            left:  calc(50% - 20px / 2);
+            width: 20px;
+            height: 20px;
+            transform: scale(.8);
+        }
+        /* 箭头-中间 */
+        .arrow-c {
+            position: absolute;
+            top: calc(50% - 20px / 2);
+            left: calc(50% - 5px / 2);
+            width: 5px;
+            height: 22px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        /* 箭头左尖 */
+        .arrow-l {
+            position: absolute;
+            top: calc(50% - 5px / 2 - 15px / 2);
+            left: calc(50% - 15px / 2 - 5px);
+            width: 15px;
+            height: 5px;
+            border-radius: 3px 3px 0px 3px;
+            background-color: #fff;
+            transform: translate(1.25px, 3.5px) rotate(-45deg);
+        }
+        /* 箭头右尖 */
+        .arrow-r {
+            position: absolute;
+            top: calc(50% - 5px / 2 - 15px / 2);
+            left: calc(50% - 15px / 2 + 5px);
+            width: 15px;
+            height: 5px;
+            border-radius: 3px 3px 3px 0px;
+            background-color: #fff;
+            transform: translate(-1.25px, 3.5px) rotate(45deg);
+        }
+        /* 鼠标停留加入并执行动画 */
+        .cloud:hover .arrow {
+            animation: fade-out 1.2s ease infinite;
+        }
+        /* 淡出 */
+        @keyframes fade-out {
+            0% {
+                opacity: 1;
+                transform: translateY(8px) scale(.8);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-10px) scale(.8);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="cloud">
+            <div class="draw circle-s"></div>
+            <div class="draw circle-m"></div>
+            <div class="draw circle-l"></div>
+            <div class="draw square"></div>
+            <div class="arrow">
+                <div class="arrow-r"></div>
+                <div class="arrow-l"></div>
+                <div class="arrow-c"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

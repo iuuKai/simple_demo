@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+		.wrap {
+			position: absolute;
+			width: 100%;
+			height: 150%;
+			background-color: #ccc;
+		}
+		.header {
+			position: relative;
+			text-align: center;
+			height: 100px;
+			background-color: pink;
+		}
+		.nav {
+			position: absolute;
+			bottom: 10px;
+			display: flex;
+			width: 100%;
+			height: 36px;
+			background-color: rgba(0, 0, 0, .2);
+			justify-content: space-around;
+			align-items: center;
+		}
+		.item {
+			flex: 1;
+			background-color: rgba(255, 255, 255, .3);
+		}
+		.item+.item {
+			margin-left: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="header">
+			<h1>头部标题</h1>
+			<div class="nav">
+				<div class="item">菜单一</div>
+				<div class="item">菜单二</div>
+				<div class="item">菜单三</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		window.onscroll = function() {
+			var nav = document.querySelector('.nav');
+
+			// nav 的位置（top距离body顶部）
+			// nav 它有 relative 父级的高度，即 header -> height: 100px;
+			// nav 它距离 relative 父级底部的位移：bottom: 10px;
+			// nav 它本身的高度: width: 36px;
+			var navPosition = 100 - 10 - 36; 
+
+			// 获取滚动条位置
+			var topScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+			// 当滚动条大于 nav 的位置，那 nav 就固定于窗口，否则还原
+			if (topScroll >= navPosition) {
+				nav.style.position = 'fixed';
+				nav.style.top = '0';
+			} else {
+				nav.style.position = 'absolute';
+				nav.style.top = 'auto';	// auto 是默认，它会变为原先的值，原先没有设置，所以 auto
+			}
+		}
+	</script>
+</body>
+</html>
