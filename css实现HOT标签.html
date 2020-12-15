@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/* 第一个普通的 HOT */
+		.wrap {
+			position: relative;
+			width: 250px;
+			height: 250px;
+			border: 2px solid red;
+			border-radius: 5px;
+			overflow: hidden;
+		}
+		.wrap:first-of-type:before {
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 2px 6px;
+			content: 'HOT';
+			color: white;
+			background-color: red;
+		}
+		.wrap:after {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;	/* 设置左右实现拉伸效果 */
+			padding: 5px 0;
+			content: '这是一只猫';
+			font-size: 1.2em;
+			color: white;
+			text-align: center;
+			background-color: rgba(0, 0, 0, .5);
+		}
+
+		/* 第二个画倒三角 HOT */
+		.wrap:last-of-type:before {
+			position: absolute;
+			top: 0;
+			right: 0;
+			content: '';
+
+			/* 自己慢慢调整 */
+			margin-top: -6px;
+			margin-right: -26px;
+
+			/* 设置边，左右透明，取消底部边或顶部边 */
+			border: 40px solid red;
+			border-left-color: transparent;
+			border-right-color: transparent;
+			border-top: 0 none;
+
+			/* 旋转 */
+			transform: rotate(45deg);
+		}
+		/* 借助其它元素填充文字内容 */
+		.wrap:last-of-type .pic:before {
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 2px 6px;
+			content: 'HOT';
+			color: white;
+
+			/* 自己慢慢调整 */
+			margin-top: 6px;
+			margin-right: -6px;
+
+			/* 旋转 */
+			transform: rotate(45deg);
+		}
+	</style>
+</head>
+<body>
+	<h1>实现方法有很多，这只是其中一个思路</h1>
+
+
+	<!-- 能用:after/:before 绝不多写一个标签，避免代码冗余 -->
+	<div class="wrap">
+		<div class="pic">
+			<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1607007071516&di=0c6e506f44ef91a5e1f00e27ff365ec7&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F5e36c82ccb3595379c2afaaf9b4c4018023ece6f8a18-bVvpRq_fw658" width="250" height="250">
+		</div>
+	</div>
+
+	<br />
+	
+	<!-- 倒三角 -->
+	<div class="wrap">
+		<div class="pic">
+			<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1607007071516&di=0c6e506f44ef91a5e1f00e27ff365ec7&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F5e36c82ccb3595379c2afaaf9b4c4018023ece6f8a18-bVvpRq_fw658" width="250" height="250">
+		</div>
+	</div>
+</body>
+</html>
